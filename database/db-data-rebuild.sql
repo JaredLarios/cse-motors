@@ -179,3 +179,12 @@ VALUES   (
     'White',
     5
   );
+
+
+UPDATE public.inventory
+set inv_description = (SELECT REPLACE (inv_description, 'the small interiors', 'a huge interior'))
+WHERE inv_model = 'Hummer';
+
+UPDATE public.inventory
+set inv_image = (SELECT REPLACE (inv_image, '/images', '/images/vehicles')),
+inv_thumbnail = (SELECT REPLACE (inv_thumbnail, '/images', '/images/vehicles'));

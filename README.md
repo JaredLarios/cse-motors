@@ -1,3 +1,6 @@
+## Videos
+Assignment2: https://www.loom.com/share/5372c4d5050f4d29b1371463355a0ec1?sid=d8f0b14f-5a75-466a-b181-d66d1a7ac1d0
+
 ## Getting Started
 
 This document is intended to get you started quickly in building a backend driven Node.js application complete with pages and content, backend logic and a PostgreSQL database for data storage.
