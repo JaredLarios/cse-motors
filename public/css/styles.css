@@ -485,6 +485,22 @@ body.error-page {
   background-color: #0056b3;
 }
 
+.error-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.error-display h2 {
+  font-size: 5.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.error-display img {
+  width: 40dvh;
+  align-self: center;
+}
+
 .container img {
   width: 100%;
   max-width: 300px; /* You can adjust the maximum width as needed */
