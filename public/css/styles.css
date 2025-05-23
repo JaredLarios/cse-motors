@@ -507,3 +507,45 @@ body.error-page {
   height: auto;
   margin-top: 20px;
 }
+
+/* Car list styles section */
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 40%;
+  text-align: left;
+}
+
+td, th {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.car-listing {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.car-listing img {
+  width: 100%;
+  border-bottom: 10px solid var(--secondary-bg);
+}
+
+.car-title {
+  display: flex;
+}
+
+.car-listing .car-information {
+  grid-row: 2/4;
+  grid-column: 1/2;
+  background-color: #fff6;
+  text-shadow: 0 0 7px white;
+  padding: 1rem;
+}
+.car-listing dl dt {
+  font-size: 1.1rem;
+  font-weight: bolder;
+}

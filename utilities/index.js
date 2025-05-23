@@ -51,6 +51,61 @@ Util.buildClassificationGrid = async function(data){
     return grid
 }
 
+Util.buildProductDetail = async function (data) {
+    try {
+        let listingHTML = "";
+        console.dir({ data });
+        if (data) {
+            listingHTML = `
+            <section class="car-listing">
+                <img src="${data.inv_image}" alt="${data.inv_make} ${data.inv_model}">
+                <div class="car-information">
+                    <div>
+                        ${Number.parseFloat(data.inv_price).toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                        })}
+                    </div>
+                <table class="description">
+                    <p>
+                    ${data.inv_description}
+                    </p>
+                    <dl>
+                    <thead>
+                    <tr>
+                        <th>MILEAGE</dt>
+                        <th>COLOR</dt>
+                        <th>CLASS</dt>
+                    </tr>
+                    <thead>
+                    <tbody>
+                        <tr>
+                        <td>
+                        ${data.inv_miles.toLocaleString("en-US", {
+                            style: "decimal",
+                        })}
+                        </td>
+                        <td>${data.inv_color}</td>
+                        <td>${data.classification_name}</td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                </div>
+            </section>
+            `;
+            // listingHTML += '<img src="/images/notexist.jpg">'; // Introduce 404 error
+        } else {
+            listingHTML = `
+            <p>Sorry, no matching vehicles could be found.</p>
+            `;
+        }
+        return listingHTML;
+    } catch (err) {
+        console.error("Util Error:" + err);
+    }
+};
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
