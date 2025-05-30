@@ -15,7 +15,12 @@ const inventoryRoute = require('./routes/inventoryRoute')
 const accountRoute = require('./routes/accountRoute')
 const utilities = require("./utilities")
 const session = require("express-session")
+const bodyParser = require("body-parser")
 const pool = require("./database")
+
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 /* ***********************
  * Layout
