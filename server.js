@@ -16,11 +16,19 @@ const accountRoute = require('./routes/accountRoute')
 const utilities = require("./utilities")
 const session = require("express-session")
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 const pool = require("./database")
 
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+
+
+// jwt authentication
+app.use(cookieParser())
+app.use(utilities.checkJWTToken)
+
+
 
 /* ***********************
  * Layout
