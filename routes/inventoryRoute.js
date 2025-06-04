@@ -17,5 +17,6 @@ router.post("/add-classification", utilities.checkLogin, invValidate.classificat
 router.get("/add-inventory", utilities.checkLogin, utilities.handleErrors(invController.buildAddInventory));
 router.post("/add-inventory", utilities.checkLogin, invValidate.inventoryRules(), invValidate.checkInventoryData, utilities.handleErrors(invController.addInventory));
 
+router.get("/edit-inventory/:inv_id", utilities.checkLogin, utilities.handleErrors(invController.buildEditInventory));
 
 module.exports = router;

@@ -102,6 +102,21 @@ async function addInventory(
     }
 }
 
+async function getInventoryById(inventoryId) {
+    try {
+        const data = await pool.query(
+        `SELECT * FROM public.inventory
+            INNER JOIN public.classification
+            ON public.inventory.classification_id = public.classification.classification_id
+            WHERE inv_id = $1`,
+        [inventoryId]
+        );
+        return data.rows[0];
+    } catch (error) {
+        console.error("getInventoryByInventoryId error" + error);
+    }
+}
+
 
 module.exports = {
     getClassifications,
@@ -109,5 +124,6 @@ module.exports = {
     getProductInformationById,
     getClassifications,
     addClassification,
-    addInventory
+    addInventory,
+    getInventoryById
 }
