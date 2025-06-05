@@ -140,7 +140,6 @@ nav {
   display: grid;
   gap: 1em;
   list-style: none;
-  /* padding: 0; */
   padding: 1em;
   justify-content: center;
 }
@@ -435,7 +434,7 @@ footer {
 /* laptop/desktop */
 @media screen and (min-width: 1700px) {
   #inv-display {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
   #singleVehicleWrapper img {
     width: auto;
