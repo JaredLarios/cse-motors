@@ -4,11 +4,11 @@ const utilities = require('../utilities')
 const regValidate = require('../utilities/account-validation')
 const accountController = require("../controllers/accountController")
 
-const invController = require("../controllers/invController")
-const invValidate = require("../utilities/inventory-validation")
+router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagementView));
 
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
 router.post("/login", utilities.handleErrors(accountController.accountLogin));
+router.get("/logout", utilities.handleErrors(accountController.accountLogout));
 router.get("/register", utilities.handleErrors(accountController.buildRegister));
 router.post(
     "/register",
@@ -17,6 +17,9 @@ router.post(
     utilities.handleErrors(accountController.registerAccount)
 );
 
-router.get("/", utilities.checkLogin,utilities.handleErrors(invController.buildManagementView));
+router.get("/update/:accountId", utilities.handleErrors(accountController.buildUpdate));
+router.post("/update", utilities.handleErrors(accountController.updateAccount));
+router.post("/update-password", utilities.handleErrors(accountController.updatePassword));
+
 
 module.exports = router;

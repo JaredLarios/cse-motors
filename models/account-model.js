@@ -9,9 +9,6 @@ async function registerAccount(account_firstname, account_lastname, account_emai
     }
 }
 
-/* *****************************
-* Return account data using email address
-* ***************************** */
 async function getAccountByEmail (account_email) {
     try {
         const result = await pool.query(
@@ -23,7 +20,42 @@ async function getAccountByEmail (account_email) {
     }
 }
 
+async function getAccountById(account_id) {
+    try {
+        const result = await pool.query(
+        "SELECT account_id, account_firstname, account_lastname, account_email, account_type, account_password FROM account WHERE account_id = $1",
+        [account_id]
+        );
+        return result.rows[0];
+    } catch (error) {
+        return new Error("No matching email found");
+    }
+}
+
+async function updateAccount(account_id, account_firstname, account_lastname, account_email) {
+    try{
+        const sql = "UPDATE account SET account_firstname = $1, account_lastname = $2, account_email = $3 WHERE account_id = $4"
+        const result = await pool.query(sql, [account_firstname, account_lastname, account_email, account_id]);
+        return result;
+    } catch(error) {
+        return new Error("Update failed");
+    }
+
+    }
+    async function updatePassword(account_id, hashed_password) {
+    try{
+        const sql = "UPDATE account SET account_password = $1 WHERE account_id = $2"
+        const result = await pool.query(sql, [hashed_password, account_id]);
+        return result;
+    } catch(error) {
+        return new Error("Update password failed")
+    }
+}
+
 module.exports = {
     registerAccount,
-    getAccountByEmail
+    getAccountByEmail,
+    getAccountById,
+    updateAccount,
+    updatePassword
 }
