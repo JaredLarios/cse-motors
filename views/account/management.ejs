@@ -1,6 +1,7 @@
 <h1><%- title %></h1>
 <%- messages() %>
 <% if (errors) { %>
+
     <ul class="notice">
     <% errors.array().forEach(error => { %>
         <li><%= error.msg %></li>
@@ -8,6 +9,7 @@
     </ul>
     <% } %>
 
+    <!-- Validating what authorizations have each user -->
     <% if(locals.accountData.account_type == "Client") { %>
         <h2>Welcome <%- locals.accountData.account_firstname %></h2>
         <p><a href="/account/update/<%- locals.accountData.account_id %>">Update account information</a></p>
