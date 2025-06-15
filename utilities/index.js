@@ -217,4 +217,42 @@ Util.updateCookie = (accountData, res) => {
     }
 };
 
+Util.buildInbox = (inboxes) => {
+    inboxList = `
+    <table>
+        <thead>
+        <tr>
+            <th>Received</th><th>Subject</th><th>From</th><th>Read</th>
+        </tr>
+        </thead>
+        <tbody>`;
+
+    inboxes.forEach((inbox) => {
+        inboxList += `
+        <tr>
+        <td>${inbox.inbox_created.toLocaleString()}</td>
+        <td><a href="/inbox/view/${inbox.inbox_id}">${inbox.inbox_subject}</a></td>
+        <td>${inbox.account_firstname} ${inbox.account_type}</td>
+        <td>${inbox.inbox_read ? "✓" : " "}</td>
+        </tr>`;
+    });
+
+    inboxList += `
+        </tbody>
+        </table> `;
+    return inboxList;
+};
+
+Util.buildRecipientList = (recipientData, preselected = null) => {
+    let list = `<select name="inbox_to" required>`;
+    list += '<option value="">Select a recipient</option>';
+
+    recipientData.forEach((recipient) => {
+        list += `<option ${preselected == recipient.account_id ? "selected" : ""} value="${recipient.account_id}">${recipient.account_firstname} ${recipient.account_lastname}</option>`
+    });
+    list += "</select>"
+
+    return list;
+};
+
 module.exports = Util

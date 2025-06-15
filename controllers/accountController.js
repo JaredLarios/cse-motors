@@ -1,5 +1,6 @@
 const utilities = require('../utilities')
 const accountModel = require('../models/account-model')
+const inboxModel = require('../models/inbox-model')
 const jwt = require("jsonwebtoken")
 const bcrypt = require('bcrypt')
 require("dotenv").config()
@@ -21,6 +22,7 @@ async function buildAccountManagementView(req, res) {
 * *************************************** */
 async function buildLogin(req, res, next) {
     let nav = await utilities.getNav()
+
     res.render("account/login", {
     title: "Login",
         nav,

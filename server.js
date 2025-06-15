@@ -18,6 +18,7 @@ const session = require("express-session")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 const pool = require("./database")
+const inboxRoute = require('./routes/inboxRoute.js');
 
 
 app.use(bodyParser.json())
@@ -70,6 +71,9 @@ app.use("/inv", inventoryRoute)
 
 // Account routes
 app.use("/account", accountRoute)
+
+// Account routes
+app.use("/inbox", inboxRoute);
 
 
 // Not Found Route
