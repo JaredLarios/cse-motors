@@ -42,12 +42,6 @@ async function getProductInformationById(product_id) {
     }
 };
 
-async function getClassifications() {
-    return await pool.query(
-        "SELECT * FROM public.classification ORDER BY classification_name"
-    );
-}
-
 async function addClassification(classification_name) {
     // ..for insertion to the database.
     const sql = `INSERT INTO public.classification (classification_name) 
